@@ -1,0 +1,58 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>New Post · Hendrik's Blog</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Lato:wght@300;400;700&display=swap">
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{background:#faf9f6;color:#2c2c2a;font-family:'Lato',sans-serif;font-weight:400;line-height:1.7}
+        nav{background:#fff;border-bottom:0.5px solid #e8e5df;padding:1rem 2rem;display:flex;align-items:center;justify-content:space-between}
+        .logo{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:600;color:#2c2c2a}
+        .logo span{color:#d85a30}
+        .nav-links{display:flex;gap:2rem}
+        .nav-links a{color:#888780;font-size:.85rem;text-decoration:none;letter-spacing:.04em;text-transform:uppercase;font-weight:700}
+        .nav-links a:hover{color:#2c2c2a}
+        .main{max-width:680px;margin:3rem auto;padding:0 1.5rem}
+        .back{font-size:.78rem;color:#d85a30;font-weight:700;letter-spacing:.04em;text-decoration:none;text-transform:uppercase;display:inline-block;margin-bottom:2rem}
+        .back:hover{color:#993c1d}
+        h1{font-family:'Playfair Display',serif;font-size:2rem;font-weight:600;color:#2c2c2a;margin-bottom:2rem}
+        .form-group{margin-bottom:1.5rem}
+        label{display:block;font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#888780;margin-bottom:.5rem}
+        input[type=text]{width:100%;padding:.8rem 1rem;border:0.5px solid #e8e5df;border-radius:8px;font-family:'Lato',sans-serif;font-size:1rem;color:#2c2c2a;background:#fff;outline:none}
+        input[type=text]:focus{border-color:#d85a30}
+        textarea{width:100%;padding:.8rem 1rem;border:0.5px solid #e8e5df;border-radius:8px;font-family:'Lato',sans-serif;font-size:.95rem;color:#2c2c2a;background:#fff;outline:none;resize:vertical;min-height:280px;line-height:1.7}
+        textarea:focus{border-color:#d85a30}
+        .btn-submit{background:#d85a30;color:#fff;border:none;padding:.8rem 2rem;border-radius:999px;font-family:'Lato',sans-serif;font-size:.9rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;cursor:pointer}
+        .btn-submit:hover{background:#993c1d}
+        footer{border-top:0.5px solid #e8e5df;padding:2rem;text-align:center;color:#b4b2a9;font-size:.78rem;margin-top:4rem;background:#fff}
+    </style>
+</head>
+<body>
+<nav>
+    <div class="logo">Hendrik<span>.</span></div>
+    <div class="nav-links">
+        <a href="/">Blog</a>
+        <a href="/admin">Admin</a>
+    </div>
+</nav>
+<div class="main">
+    <a class="back" href="/">← Back</a>
+    <h1>New post</h1>
+    <form method="POST">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="id_title">Title</label>
+            <input type="text" name="title" id="id_title" required>
+        </div>
+        <div class="form-group">
+            <label for="id_text">Content</label>
+            <textarea name="text" id="id_text" required></textarea>
+        </div>
+        <button class="btn-submit" type="submit">Publish</button>
+    </form>
+</div>
+<footer>© 2026 Hendrik · Made with Django</footer>
+</body>
+</html>
