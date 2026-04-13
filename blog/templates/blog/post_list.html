@@ -41,8 +41,16 @@
     <div class="logo">Hendrik<span>.</span></div>
     <div class="nav-links">
         <a href="/">Blog</a>
-        <a href="{% url 'post_new' %}">+ New Post</a>
-        <a href="/admin">Admin</a>
+        {% if user.is_authenticated %}
+            <a href="{% url 'post_new' %}">+ New Post</a>
+            <a href="/admin">Admin</a>
+            <form method="POST" action="{% url 'logout' %}" style="display:inline">
+                {% csrf_token %}
+                <button type="submit" style="background:none;border:none;color:#888780;font-size:.85rem;letter-spacing:.04em;text-transform:uppercase;font-weight:700;cursor:pointer;font-family:'Lato',sans-serif">Logout</button>
+            </form>
+        {% else %}
+            <a href="{% url 'login' %}">Login</a>
+        {% endif %}
     </div>
 </nav>
 <div class="hero">

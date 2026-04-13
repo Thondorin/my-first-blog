@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Login · Hendrik's Blog</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Lato:wght@300;400;700&display=swap">
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{background:#faf9f6;color:#2c2c2a;font-family:'Lato',sans-serif;font-weight:400;line-height:1.7;min-height:100vh;display:flex;flex-direction:column}
+        nav{background:#fff;border-bottom:0.5px solid #e8e5df;padding:1rem 2rem;display:flex;align-items:center;justify-content:space-between}
+        .logo{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:600;color:#2c2c2a}
+        .logo span{color:#d85a30}
+        .nav-links a{color:#888780;font-size:.85rem;text-decoration:none;letter-spacing:.04em;text-transform:uppercase;font-weight:700}
+        .nav-links a:hover{color:#2c2c2a}
+        .main{max-width:420px;margin:5rem auto;padding:0 1.5rem;width:100%}
+        .card{background:#fff;border:0.5px solid #e8e5df;border-radius:16px;padding:2.5rem}
+        .card-tag{font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:#d85a30;font-weight:700;margin-bottom:.75rem}
+        h1{font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:600;color:#2c2c2a;margin-bottom:2rem;line-height:1.2}
+        .form-group{margin-bottom:1.25rem}
+        label{display:block;font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#888780;margin-bottom:.5rem}
+        input[type=text],input[type=password]{width:100%;padding:.8rem 1rem;border:0.5px solid #e8e5df;border-radius:8px;font-family:'Lato',sans-serif;font-size:.95rem;color:#2c2c2a;background:#fff;outline:none}
+        input[type=text]:focus,input[type=password]:focus{border-color:#d85a30}
+        .btn-submit{width:100%;background:#d85a30;color:#fff;border:none;padding:.9rem;border-radius:999px;font-family:'Lato',sans-serif;font-size:.9rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;cursor:pointer;margin-top:.5rem}
+        .btn-submit:hover{background:#993c1d}
+        .errors{background:#faece7;border:0.5px solid #f0997b;border-radius:8px;padding:.75rem 1rem;margin-bottom:1.25rem;font-size:.85rem;color:#993c1d}
+        footer{border-top:0.5px solid #e8e5df;padding:2rem;text-align:center;color:#b4b2a9;font-size:.78rem;margin-top:auto;background:#fff}
+    </style>
+</head>
+<body>
+<nav>
+    <div class="logo">Hendrik<span>.</span></div>
+    <div class="nav-links">
+        <a href="/">Blog</a>
+    </div>
+</nav>
+<div class="main">
+    <div class="card">
+        <p class="card-tag">Willkommen zurück</p>
+        <h1>Einloggen</h1>
+        {% if form.errors %}
+        <div class="errors">
+            Benutzername oder Passwort falsch. Bitte erneut versuchen.
+        </div>
+        {% endif %}
+        <form method="POST">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="id_username">Benutzername</label>
+                <input type="text" name="username" id="id_username" required autofocus>
+            </div>
+            <div class="form-group">
+                <label for="id_password">Passwort</label>
+                <input type="password" name="password" id="id_password" required>
+            </div>
+            <button class="btn-submit" type="submit">Einloggen</button>
+        </form>
+    </div>
+</div>
+<footer>© 2026 Hendrik · Made with Django</footer>
+</body>
+</html>
